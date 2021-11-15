@@ -44,6 +44,7 @@
     "*.{js,css,md}": "prettier --write"
   },
   "dependencies": {
+    "dotenv": "^10.0.0",
     "socket.io-client": "^4.3.2"
   }
 }
