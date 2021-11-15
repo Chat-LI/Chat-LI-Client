@@ -1,0 +1,46 @@
+{
+  "name": "chat-li-client",
+  "version": "1.0.0",
+  "description": "**Chat-Li** is a CLI that allows users to communicate via the terminal. Users will be able to create accounts as well as rooms by using the **Chat-Li** API. After this they can use the CLI to chat with other users connected to the same room. Be a command line hero with **Chat-Li** and enjoy communicating with friends in a new exciting, and colorful, way!",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Chat-LI/Chat-LI-Client.git"
+  },
+  "contributors": [
+    {
+      "name": "Marquesa Asmussen",
+      "url": "https://github.com/MarquesaAsmussen"
+    },
+    {
+      "name": "Christopher Burk",
+      "url": "https://github.com/cburk2019"
+    },
+    {
+      "name": "Alexander Beers",
+      "url": "https://github.com/Beers15"
+    },
+    {
+      "name": "Kason Braley",
+      "url": "https://github.com/KasonBraley"
+    }
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Chat-LI/Chat-LI-Client/issues"
+  },
+  "homepage": "https://github.com/Chat-LI/Chat-LI-Client#readme",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepare": "husky install"
+  },
+  "devDependencies": {
+    "eslint": "^8.2.0",
+    "husky": "^7.0.4",
+    "lint-staged": "^11.2.6",
+    "prettier": "^2.4.1"
+  },
+  "lint-staged": {
+    "*.{js,css,md}": "prettier --write"
+  }
+}
