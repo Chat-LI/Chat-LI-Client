@@ -1,6 +1,7 @@
 const loginOrRegister = require('./loginOrRegister');
 const messageLoop = require('./messageLoop');
 const roomChoice = require('./roomChoice');
+const getRoomAction = require('./getRoomAction');
 const login = require('./login');
 const register = require('./register');
 
@@ -17,7 +18,22 @@ const mainLoop = async (socket) => {
     await register(socket);
   }
 
-  let room = await roomChoice();
+  let roomAction = await getRoomAction();
+  while (roomAction < 0 && roomAction > 3) {
+    console.log('Invalid selection\n');
+    roomAction = await getRoomAction();
+  }
+  let room = 'General';
+  if (roomAction === '1') {
+    room = await roomChoice();
+  } else if (roomAction === '2') {
+    //user selected join private room
+    console.log('Coming soon!');
+  } else {
+    //user selected create private room
+    console.log('Coming soon!');
+  }
+
   console.log(`Joining room: ${room}`);
   socket.emit('join', room);
 
