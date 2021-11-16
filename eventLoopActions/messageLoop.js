@@ -1,6 +1,6 @@
 const rl = require('../utils/readLine');
 
-const messageLoop = (socket) => {
+const messageLoop = (socket, room) => {
   rl.setPrompt('>> ');
   rl.prompt();
 
@@ -14,6 +14,7 @@ const messageLoop = (socket) => {
       let payload = {
         user: socket.id,
         message: input,
+        room,
       };
       socket.emit('message', payload);
     }

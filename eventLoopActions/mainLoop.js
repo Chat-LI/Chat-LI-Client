@@ -4,10 +4,11 @@ const roomChoice = require('./roomChoice.js');
 
 const mainLoop = async (socket) => {
   let choice;
+  let room;
   while (true) {
     choice = await loginOrRegister();
 
-    let room = await roomChoice();
+    room = await roomChoice();
     console.log(`Joining room: ${room}`);
 
     socket.emit('join', room);
@@ -21,7 +22,7 @@ const mainLoop = async (socket) => {
 
   //if choice is 1
 
-  messageLoop(socket);
+  messageLoop(socket, room);
 };
 
 module.exports = mainLoop;
