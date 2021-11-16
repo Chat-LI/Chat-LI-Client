@@ -5,7 +5,7 @@ const messageLoop = (socket, room) => {
   rl.prompt();
 
   rl.on('line', (input) => {
-    if (input.startsWith('/quit')) {
+    if (input === '/quit') {
       console.log('Goodbye!');
       socket.emit('quit', {});
       process.exit();
