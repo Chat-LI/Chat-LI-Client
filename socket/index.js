@@ -11,7 +11,7 @@ module.exports = function (socket) {
   });
 
   socket.on('message', (payload) => {
-    console.log(`${payload.user}: ${payload.message}`);
+    console.log(`${socket.user}: ${payload.message}`);
   });
 
   socket.on('disconnect', (reason) => {
