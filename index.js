@@ -20,7 +20,11 @@ const messageLoop = () => {
         break;
       default:
         console.log('You entered ' + input);
-        socket.emit('message', 'Someone sent: ' + input);
+        let payload = {
+          user: socket.id,
+          message: input,
+        };
+        socket.emit('message', payload);
         break;
     }
     if (!quit) rl.prompt();
@@ -35,8 +39,8 @@ socket.on('connect', () => {
   messageLoop();
 });
 
-socket.on('Something', () => {
-  console.log('something event received from server');
+socket.on('user-connected', (payload) => {
+  console.log(`${payload.user} has entered the building.`);
 });
 
 socket.on('message', (payload) => {
