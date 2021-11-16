@@ -17,7 +17,8 @@ const messageLoop = () => {
       case '/quit':
         console.log('Goodbye!');
         quit = true;
-        break;
+        process.exit(0);
+      // break;
       default:
         console.log('You entered ' + input);
         socket.emit('message', 'Someone sent: ' + input);
