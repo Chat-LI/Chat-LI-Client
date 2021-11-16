@@ -1,8 +1,8 @@
 require('dotenv').config();
 
 const io = require('socket.io-client');
-//const socket = io(process.env.SOCKET_SERVER_LOCAL);
-const socket = io(process.env.SOCKET_SERVER);
+const socket = io(process.env.SOCKET_SERVER_LOCAL);
+//const socket = io(process.env.SOCKET_SERVER);
 
 var readline = require('readline');
 var rl = readline.createInterface(process.stdin, process.stdout);
@@ -20,7 +20,11 @@ const messageLoop = () => {
         break;
       default:
         console.log('You entered ' + input);
-        socket.emit('message', 'Someone sent: ' + input);
+        let payload = {
+          user: socket.id,
+          message: input,
+        };
+        socket.emit('message', payload);
         break;
     }
     if (!quit) rl.prompt();
@@ -35,12 +39,12 @@ socket.on('connect', () => {
   messageLoop();
 });
 
-socket.on('Something', () => {
-  console.log('something event received from server');
+socket.on('user-connected', (user) => {
+  console.log(`${user} has entered the building.`);
 });
 
 socket.on('message', (payload) => {
-  console.log(payload);
+  console.log(`${payload.user}: ${payload.message}`);
 });
 
 socket.on('disconnect', (reason) => {
