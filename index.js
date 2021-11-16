@@ -37,25 +37,24 @@ const messageLoop = () => {
   rl.prompt();
 
   rl.on('line', (input) => {
-    let quit = false;
-    switch (input.trim()) {
-      case '/quit':
-        console.log('Goodbye!');
-        quit = true;
-        process.exit(0);
-      // break;
-      default:
-        console.log('You entered ' + input);
-        let payload = {
-          user: socket.id,
-          message: input,
-        };
-        socket.emit('message', payload);
-        break;
+    if (input.startsWith('/quit')) {
+      console.log('Goodbye!');
+      socket.emit('quit', {});
+      process.exit();
+    } else {
+      console.log('You entered ' + input);
+      let payload = {
+        user: socket.id,
+        message: input,
+      };
+      socket.emit('message', payload);
     }
-    if (!quit) rl.prompt();
+
+    rl.prompt();
   }).on('close', () => {
     console.log('Goodbye!');
+    socket.emit('quit', {});
+    process.exit();
   });
 };
 
@@ -76,9 +75,8 @@ socket.on('disconnect', (reason) => {
   console.log('Reason for disconnection: ', reason);
 });
 
-socket.emit('join', 'General Room 1');
-// TODO: Socket.io
-// setup message listener
-// rooms -> create, join, leave room
+socket.on('quit', (payload) => {
+  console.log(`${payload} quit the chat`);
+});
 
-// TODO: If reason is "transport close" -> send message with "sorry, our server closed"
+socket.emit('join', 'General Room 1');
