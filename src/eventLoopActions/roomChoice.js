@@ -1,14 +1,8 @@
 const rl = require('../utils/readLine');
+const rooms = require('../socket/rooms.json');
 
 module.exports = async function () {
   console.log('Pick a room to join');
-
-  const rooms = {
-    1: 'General',
-    2: 'Gaming',
-    3: 'Music',
-    4: 'Programming',
-  };
 
   let answer;
   answer = await rl.question(`
