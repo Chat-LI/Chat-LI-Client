@@ -7,7 +7,7 @@ module.exports = function (socket) {
   });
 
   socket.on('user-connected', (user) => {
-    console.log(`${socket.user} has entered the chat.`);
+    console.log(`${user} has entered the chat.`);
   });
 
   socket.on('message', (payload) => {
@@ -19,7 +19,7 @@ module.exports = function (socket) {
   });
 
   socket.on('quit', (payload) => {
-    console.log(`${payload} quit the chat`);
+    console.log(`${socket.user} quit the chat`);
   });
 
   socket.on('listUsers', (payload) => {
