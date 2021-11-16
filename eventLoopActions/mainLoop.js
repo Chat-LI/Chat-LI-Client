@@ -1,6 +1,7 @@
 const loginOrRegister = require('./loginOrRegister');
 const messageLoop = require('./messageLoop');
 const roomChoice = require('./roomChoice.js');
+const login = require('./login.js');
 
 const mainLoop = async (socket) => {
   let choice;
@@ -20,7 +21,12 @@ const mainLoop = async (socket) => {
     }
   }
 
-  //if choice is 1
+  if (choice == 1) {
+    await login(socket);
+    // console.log(socket);
+  } else {
+    // register();
+  }
 
   messageLoop(socket, room);
 };
