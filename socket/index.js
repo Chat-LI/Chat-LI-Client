@@ -21,6 +21,4 @@ module.exports = function (socket) {
   socket.on('quit', (payload) => {
     console.log(`${payload} quit the chat`);
   });
-
-  socket.emit('join', 'General Room 1');
 };
