@@ -1,13 +1,10 @@
 const rl = require('../utils/readLine.js');
-const base64 = require('base-64');
 const axios = require('axios');
 
 const login = async (socket) => {
-  // breakout of loop with successful response
-
   while (true) {
     let username = await rl.question('Please enter your username:\n');
-    let password = await rl.question('Please enter a password\n');
+    let password = await rl.question('Please enter your password\n');
 
     try {
       let res = await axios.post(
@@ -20,23 +17,22 @@ const login = async (socket) => {
           },
         }
       );
+
       if (res.data.user.token) {
         socket.user = res.data.user.username;
         socket.role = res.data.user.role;
         socket.token = res.data.user.token;
 
-        // TODO: store user object (username & token)
-        console.log('Great success! You logged in!');
+        console.log('\nSuccessfully logged in\n');
         break;
       } else {
-        console.log('Sorry partner, invalid login');
+        console.log('Invalid login. Please try again.');
       }
-    } catch (e) {
-      // console.log(e.response.status);
-      if (e.response && e.response.status === 403) {
-        console.log('Sorry partner, invalid login');
+    } catch (err) {
+      if (err.response && err.response.status === 403) {
+        console.log('Invalid login. Please try again.');
       } else {
-        console.log(e);
+        console.log(err);
       }
     }
   }
