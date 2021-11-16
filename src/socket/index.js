@@ -7,7 +7,7 @@ module.exports = function (socket) {
   });
 
   socket.on('user-connected', (user) => {
-    console.log(`${user} has entered the building.`);
+    console.log(`${socket.user} has entered the chat.`);
   });
 
   socket.on('message', (payload) => {
