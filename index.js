@@ -1,8 +1,8 @@
 require('dotenv').config();
 
 const io = require('socket.io-client');
-//const socket = io(process.env.SOCKET_SERVER_LOCAL);
-const socket = io(process.env.SOCKET_SERVER);
+const socket = io(process.env.SOCKET_SERVER_LOCAL);
+//const socket = io(process.env.SOCKET_SERVER);
 
 var readline = require('readline');
 var rl = readline.createInterface(process.stdin, process.stdout);
@@ -39,12 +39,12 @@ socket.on('connect', () => {
   messageLoop();
 });
 
-socket.on('user-connected', (payload) => {
-  console.log(`${payload.user} has entered the building.`);
+socket.on('user-connected', (user) => {
+  console.log(`${user} has entered the building.`);
 });
 
 socket.on('message', (payload) => {
-  console.log(payload);
+  console.log(`${payload.user}: ${payload.message}`);
 });
 
 socket.on('disconnect', (reason) => {
