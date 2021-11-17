@@ -1,5 +1,6 @@
 const rl = require('../utils/readLine');
 const rooms = require('../socket/rooms.json');
+const chalk = require('chalk');
 
 const messageLoop = (socket, room) => {
   rl.setPrompt('>> ');
@@ -7,7 +8,7 @@ const messageLoop = (socket, room) => {
 
   rl.on('line', (input) => {
     if (input === '/quit') {
-      console.log('Goodbye!');
+      console.log(chalk.magenta('Goodbye!'));
       socket.emit('quit', {});
       process.exit();
     } else if (input === '/listUsers') {
@@ -25,7 +26,6 @@ const messageLoop = (socket, room) => {
         socket.emit('listRoomUsers', room);
       }
     } else {
-      console.log('You entered ' + input);
       let payload = {
         user: socket.id,
         message: input,
@@ -36,7 +36,7 @@ const messageLoop = (socket, room) => {
 
     rl.prompt();
   }).on('close', () => {
-    console.log('Goodbye!');
+    console.log(chalk.magenta('Goodbye!'));
     socket.emit('quit', {});
     process.exit();
   });

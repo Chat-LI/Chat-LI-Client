@@ -4,11 +4,12 @@ const roomChoice = require('./roomChoice');
 const getRoomAction = require('./getRoomAction');
 const login = require('./login');
 const register = require('./register');
+const chalk = require('chalk');
 
 const mainLoop = async (socket) => {
   let choice = await loginOrRegister();
   while (choice !== '1' && choice !== '2') {
-    console.log('Invalid selection\n');
+    console.log(chalk.bgRed(' Invalid selection\n '));
     choice = await loginOrRegister();
   }
 
@@ -20,7 +21,7 @@ const mainLoop = async (socket) => {
 
   let roomAction = await getRoomAction();
   while (roomAction < 0 && roomAction > 3) {
-    console.log('Invalid selection\n');
+    console.log(chalk.bgRed(' Invalid selection\n '));
     roomAction = await getRoomAction();
   }
   let room = 'General';

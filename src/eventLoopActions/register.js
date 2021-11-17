@@ -1,10 +1,13 @@
 const rl = require('../utils/readLine.js');
 const axios = require('axios');
+const chalk = require('chalk');
 
 const register = async (socket) => {
   while (true) {
-    let username = await rl.question('Please enter a username:\n');
-    let password = await rl.question('Please enter a password\n');
+    console.log(chalk.cyan('\nPlease enter a username:'));
+    let username = await rl.question('');
+    console.log(chalk.cyan('Please enter a password'));
+    let password = await rl.question('');
 
     let body = { username, password };
 
@@ -16,16 +19,22 @@ const register = async (socket) => {
         socket.role = res.data.user.role;
         socket.token = res.data.user.token;
 
-        console.log('\nSuccessfully registered for Chat-LI.\n');
+        console.log(
+          chalk.black.bgGreen('\n Successfully registered for Chat-LI. \n')
+        );
         break;
       } else {
         console.log(
-          'Unable to register an account with those credentials, please try again.'
+          chalk.bgRed(
+            ' Unable to register an account with those credentials, please try again. '
+          )
         );
       }
     } catch (err) {
       console.log(
-        'Unable to register an account with those credentials, please try again.'
+        chalk.bgRed(
+          ' Unable to register an account with those credentials, please try again. '
+        )
       );
     }
   }
