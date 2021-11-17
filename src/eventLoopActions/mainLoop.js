@@ -1,7 +1,11 @@
+const fs = require('fs').promises;
+const path = require('path');
+
 const loginOrRegister = require('./loginOrRegister');
 const messageLoop = require('./messageLoop');
 const roomChoice = require('./roomChoice');
 const getRoomAction = require('./getRoomAction');
+const fetchPrivateRooms = require('./fetchPrivateRooms');
 const login = require('./login');
 const register = require('./register');
 const chalk = require('chalk');
@@ -29,8 +33,15 @@ const mainLoop = async (socket) => {
   if (roomAction === '1') {
     room = await roomChoice();
   } else if (roomAction === '2') {
-    //user selected join private room
-    console.log('Coming soon!');
+    let roomData = await fetchPrivateRooms();
+
+    if (!roomData) {
+      console.log(
+        chalk.bgRed(' Something went wrong when fetching the rooms! \n ')
+      );
+    } else {
+      //display the roomData to the user and prompt them to select one
+    }
   } else {
     //user selected create private room
     console.log('Coming soon!');

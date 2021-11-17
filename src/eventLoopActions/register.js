@@ -12,7 +12,11 @@ const register = async (socket) => {
     let body = { username, password };
 
     try {
-      let res = await axios.post(`${process.env.SOCKET_SERVER}signup`, body);
+      //let res = await axios.post(`${process.env.SOCKET_SERVER}signup`, body);
+      let res = await axios.post(
+        `${process.env.SOCKET_SERVER_LOCAL}signup`,
+        body
+      );
 
       if (res.data.user.token) {
         socket.user = res.data.user.username;
