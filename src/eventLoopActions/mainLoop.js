@@ -21,6 +21,8 @@ const mainLoop = async (socket) => {
     username = await register(socket);
   }
 
+  socket.emit('username', username);
+
   let roomAction = await getRoomAction();
   while (roomAction < 0 && roomAction > 3) {
     console.log(chalk.bgRed(' Invalid selection\n '));
