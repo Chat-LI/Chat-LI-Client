@@ -35,6 +35,12 @@ module.exports = async function () {
     chalk.cyan('Programming'),
     chalk.red('---\n')
   );
+  console.log(
+    chalk.yellow('         5]'),
+    chalk.red('   ---'),
+    chalk.cyan('Sports'),
+    chalk.red('---\n')
+  );
 
   answer = await rl.question('');
 
@@ -62,6 +68,12 @@ module.exports = async function () {
       chalk.yellow('         4]'),
       chalk.red(' ---'),
       chalk.cyan('Programming'),
+      chalk.red('---\n')
+    );
+    console.log(
+      chalk.yellow('         5]'),
+      chalk.red('   ---'),
+      chalk.cyan('Sports'),
       chalk.red('---\n')
     );
     answer = await rl.question(``);
