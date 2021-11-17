@@ -11,15 +11,15 @@ module.exports = function (socket) {
   });
 
   socket.on('message', (payload) => {
-    console.log(`${socket.user}: ${payload.message}`);
+    console.log(`${payload.username}: ${payload.message}`);
   });
 
   socket.on('disconnect', (reason) => {
     console.log('Reason for disconnection: ', reason);
   });
 
-  socket.on('quit', (payload) => {
-    console.log(`${socket.user} quit the chat`);
+  socket.on('quit', (username) => {
+    console.log(`${username} quit the chat`);
   });
 
   socket.on('listUsers', (payload) => {
