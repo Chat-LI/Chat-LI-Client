@@ -32,11 +32,7 @@ const login = async (socket) => {
         console.log(chalk.bgRed('Invalid login. Please try again.'));
       }
     } catch (err) {
-      if (err.response && err.response.status === 403) {
-        console.log(chalk.bgRed('Invalid login. Please try again.'));
-      } else {
-        console.log(err);
-      }
+      console.log(chalk.bgRed(err.response.data));
     }
   }
 };
