@@ -1,9 +1,26 @@
 const rl = require('../utils/readLine');
+const chalk = require('chalk');
 
 const loginOrRegister = async () => {
-  console.log('----- Choose an Option -----');
+  console.log(
+    chalk.red('====='),
+    chalk.cyan('Choose an Option'),
+    chalk.red('=====\n')
+  );
 
-  let choice = await rl.question('1) Login --- 2) Register\n');
+  console.log(
+    chalk.yellow('    1]'),
+    chalk.red(' ---'),
+    chalk.cyan('Login'),
+    chalk.red(' ---\n')
+  );
+  console.log(
+    chalk.yellow('    2]'),
+    chalk.red('---'),
+    chalk.cyan('Register'),
+    chalk.red('---\n')
+  );
+  let choice = await rl.question('');
 
   return choice;
 };

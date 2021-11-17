@@ -1,13 +1,15 @@
-const mainLoop = require('../eventLoopActions/mainLoop.js');
+const executeMainLoop = require('../eventLoopActions/mainLoop.js');
+const getIntroScreen = require('../utils/getIntroScreen');
+const chalk = require('chalk');
 
 module.exports = function (socket) {
   socket.on('connect', async () => {
-    console.log('You are CONNECTED!');
-    mainLoop(socket);
+    getIntroScreen();
+    executeMainLoop(socket);
   });
 
   socket.on('user-connected', (user) => {
-    console.log(`${user} has entered the chat.`);
+    console.log(chalk.green(`${user} has entered the chat.`));
   });
 
   socket.on('message', (payload) => {
@@ -15,11 +17,11 @@ module.exports = function (socket) {
   });
 
   socket.on('disconnect', (reason) => {
-    console.log('Reason for disconnection: ', reason);
+    console.log(chalk.bgRed('Reason for disconnection: '), reason);
   });
 
   socket.on('quit', (username) => {
-    console.log(`${username} quit the chat`);
+    console.log(chalk.red(`${username} quit the chat`));
   });
 
   socket.on('listUsers', (payload) => {

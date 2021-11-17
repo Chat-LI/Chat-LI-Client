@@ -1,10 +1,13 @@
 const rl = require('../utils/readLine.js');
 const axios = require('axios');
+const chalk = require('chalk');
 
 const login = async (socket) => {
   while (true) {
-    let username = await rl.question('Please enter your username:\n');
-    let password = await rl.question('Please enter your password\n');
+    console.log(chalk.cyan('\nPlease enter your username:'));
+    let username = await rl.question('');
+    console.log(chalk.cyan('Please enter your password'));
+    let password = await rl.question('');
 
     try {
       let res = await axios.post(
@@ -23,14 +26,14 @@ const login = async (socket) => {
         socket.role = res.data.user.role;
         socket.token = res.data.user.token;
 
-        console.log('Great success! You logged in!');
+        console.log(chalk.bgGreen.black('You logged in!\n'));
         return res.data.user.username;
       } else {
-        console.log('Invalid login. Please try again.');
+        console.log(chalk.bgRed('Invalid login. Please try again.'));
       }
     } catch (err) {
       if (err.response && err.response.status === 403) {
-        console.log('Invalid login. Please try again.');
+        console.log(chalk.bgRed('Invalid login. Please try again.'));
       } else {
         console.log(err);
       }
