@@ -6,6 +6,7 @@ const messageLoop = (socket, room) => {
   rl.setPrompt('>> ');
   rl.prompt();
 
+  let currentRoom = room;
   rl.on('line', (input) => {
     if (input === '/quit') {
       console.log(chalk.magenta('Goodbye!'));
@@ -15,6 +16,20 @@ const messageLoop = (socket, room) => {
       socket.emit('listUsers');
     } else if (input === '/listRooms') {
       console.log(Object.values(rooms));
+    } else if (input.startsWith('/switchRoom')) {
+      let room = input.split(' ').pop().toLowerCase();
+
+      if (
+        !Object.values(rooms)
+          .map((value) => value.toLowerCase())
+          .includes(room)
+      ) {
+        console.log('[ERR] Invalid room name');
+      } else {
+        socket.emit('leaveRoom', currentRoom);
+        socket.emit('join', { room });
+        currentRoom = room;
+      }
     } else if (input.startsWith('/listRoomUsers')) {
       let room = input.split(' ').pop().toLowerCase();
 
@@ -30,7 +45,7 @@ const messageLoop = (socket, room) => {
     } else {
       let payload = {
         message: input,
-        room,
+        room: currentRoom,
       };
       socket.emit('message', payload);
     }

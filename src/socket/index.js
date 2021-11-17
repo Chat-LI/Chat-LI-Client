@@ -12,6 +12,10 @@ module.exports = function (socket) {
     console.log(chalk.green(`${user} has entered the chat.`));
   });
 
+  socket.on('userLeftRoom', (username) => {
+    console.log(chalk.green(`${username} has left the room.`));
+  });
+
   socket.on('message', (payload) => {
     console.log(`${payload.username}: ${payload.message}`);
   });
