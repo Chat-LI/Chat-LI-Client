@@ -13,15 +13,15 @@ module.exports = function (socket) {
   });
 
   socket.on('message', (payload) => {
-    console.log(`${socket.user}: ${payload.message}`);
+    console.log(`${payload.username}: ${payload.message}`);
   });
 
   socket.on('disconnect', (reason) => {
     console.log(chalk.bgRed('Reason for disconnection: '), reason);
   });
 
-  socket.on('quit', (payload) => {
-    console.log(chalk.red(`${socket.user} quit the chat`));
+  socket.on('quit', (username) => {
+    console.log(chalk.red(`${username} quit the chat`));
   });
 
   socket.on('listUsers', (payload) => {

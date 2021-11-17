@@ -19,10 +19,8 @@ const register = async (socket) => {
         socket.role = res.data.user.role;
         socket.token = res.data.user.token;
 
-        console.log(
-          chalk.black.bgGreen('\n Successfully registered for Chat-LI. \n')
-        );
-        break;
+        chalk.black.bgGreen('\n Successfully registered for Chat-LI. \n');
+        return res.data.user.username;
       } else {
         console.log(
           chalk.bgRed(
