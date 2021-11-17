@@ -12,10 +12,11 @@ const mainLoop = async (socket) => {
     choice = await loginOrRegister();
   }
 
+  let username;
   if (choice === '1') {
-    await login(socket);
+    username = await login(socket);
   } else {
-    await register(socket);
+    username = await register(socket);
   }
 
   let roomAction = await getRoomAction();
@@ -35,7 +36,7 @@ const mainLoop = async (socket) => {
   }
 
   console.log(`Joining room: ${room}`);
-  socket.emit('join', room);
+  socket.emit('join', { room, username });
 
   messageLoop(socket, room);
 };

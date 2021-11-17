@@ -8,7 +8,7 @@ const messageLoop = (socket, room) => {
   rl.on('line', (input) => {
     if (input === '/quit') {
       console.log('Goodbye!');
-      socket.emit('quit', {});
+      socket.emit('quit');
       process.exit();
     } else if (input === '/listUsers') {
       socket.emit('listUsers');
@@ -27,7 +27,6 @@ const messageLoop = (socket, room) => {
     } else {
       console.log('You entered ' + input);
       let payload = {
-        user: socket.id,
         message: input,
         room,
       };
@@ -37,7 +36,7 @@ const messageLoop = (socket, room) => {
     rl.prompt();
   }).on('close', () => {
     console.log('Goodbye!');
-    socket.emit('quit', {});
+    socket.emit('quit');
     process.exit();
   });
 };

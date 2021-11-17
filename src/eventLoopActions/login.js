@@ -23,8 +23,8 @@ const login = async (socket) => {
         socket.role = res.data.user.role;
         socket.token = res.data.user.token;
 
-        console.log('\nSuccessfully logged in\n');
-        break;
+        console.log('Great success! You logged in!');
+        return res.data.user.username;
       } else {
         console.log('Invalid login. Please try again.');
       }

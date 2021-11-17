@@ -17,7 +17,7 @@ const register = async (socket) => {
         socket.token = res.data.user.token;
 
         console.log('\nSuccessfully registered for Chat-LI.\n');
-        break;
+        return res.data.user.username;
       } else {
         console.log(
           'Unable to register an account with those credentials, please try again.'
