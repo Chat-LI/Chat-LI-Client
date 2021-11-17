@@ -29,11 +29,7 @@ const register = async (socket) => {
         );
       }
     } catch (err) {
-      console.log(
-        chalk.bgRed(
-          ' Unable to register an account with those credentials, please try again. '
-        )
-      );
+      console.log(chalk.bgRed(err.response.data));
     }
   }
 };
