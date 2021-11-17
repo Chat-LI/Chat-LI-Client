@@ -9,13 +9,13 @@ const loginOrRegister = async () => {
   );
 
   console.log(
-    chalk.yellow('    1]'),
-    chalk.red(' ---'),
+    chalk.yellow('1]'),
+    chalk.red('---'),
     chalk.cyan('Login'),
-    chalk.red(' ---\n')
+    chalk.red('---\n')
   );
   console.log(
-    chalk.yellow('    2]'),
+    chalk.yellow('2]'),
     chalk.red('---'),
     chalk.cyan('Register'),
     chalk.red('---\n')

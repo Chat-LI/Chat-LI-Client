@@ -1,5 +1,5 @@
 const rl = require('../utils/readLine');
-const rooms = require('../socket/rooms.json');
+const rooms = require('../data/publicRooms.json');
 const chalk = require('chalk');
 
 const messageLoop = (socket, room) => {

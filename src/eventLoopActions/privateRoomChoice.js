@@ -12,6 +12,11 @@ const privateRoomChoice = async () => {
     return false;
   }
 
+  if (roomData.length === 0) {
+    chalk.bgRed(' No private rooms are available at the moment! \n ');
+    return false;
+  }
+
   console.log(
     chalk.red('====='),
     chalk.cyan('Pick a room to join'),
