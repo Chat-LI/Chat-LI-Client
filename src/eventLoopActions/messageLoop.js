@@ -13,6 +13,8 @@ const messageLoop = (socket, room) => {
       process.exit();
     } else if (input === '/listUsers') {
       socket.emit('listUsers');
+    } else if (input === '/listRooms') {
+      console.log(Object.values(rooms));
     } else if (input.startsWith('/listRoomUsers')) {
       let room = input.split(' ').pop().toLowerCase();
 
