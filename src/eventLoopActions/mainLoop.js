@@ -50,6 +50,11 @@ const mainLoop = async (socket) => {
     }
   }
 
+  console.log(
+    `\n ${chalk.red('====')} Run ${chalk.green(
+      '/help'
+    )} to see list of available commands ${chalk.red('====')}\n`
+  );
   console.log(chalk.magenta(`\nJoining room: ${room}`));
   socket.emit('join', { room, username });
 

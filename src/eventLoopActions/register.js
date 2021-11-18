@@ -14,8 +14,8 @@ const register = async (socket) => {
     try {
       //let res = await axios.post(`${process.env.SOCKET_SERVER}signup`, body);
       let res = await axios.post(
-        `${process.env.SOCKET_SERVER_LOCAL}signup`,
-        //`${process.env.SOCKET_SERVER}signup`,
+        //`${process.env.SOCKET_SERVER_LOCAL}signup`,
+        `${process.env.SOCKET_SERVER}signup`,
         body
       );
 
