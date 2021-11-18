@@ -37,6 +37,7 @@ const register = async (socket) => {
       console.log(chalk.bgRed(err.response.data));
     }
   } while (!user);
+  return user;
 };
 
 module.exports = register;
