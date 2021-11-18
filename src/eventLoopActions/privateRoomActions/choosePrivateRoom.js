@@ -1,9 +1,9 @@
 const fetchPrivateRooms = require('./fetchPrivateRooms');
-const rl = require('../utils/readLine');
+const rl = require('../../utils/readLine');
 const chalk = require('chalk');
 const joinPrivateRoom = require('./joinPrivateRoom');
 
-const privateRoomChoice = async () => {
+const choosePrivateRoom = async () => {
   let roomData = await fetchPrivateRooms();
 
   if (!roomData) {
@@ -55,4 +55,4 @@ const privateRoomChoice = async () => {
   return roomResult;
 };
 
-module.exports = privateRoomChoice;
+module.exports = choosePrivateRoom;
