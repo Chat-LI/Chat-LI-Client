@@ -4,6 +4,7 @@ const fs = require('fs').promises;
 const path = require('path');
 
 const fetchPrivateRooms = async () => {
+  let dataPath = path.join(__dirname, '../../data/privateRooms.json');
   try {
     var temp = {
       rooms: [],
@@ -15,8 +16,6 @@ const fetchPrivateRooms = async () => {
       temp.rooms.push({ roomname: entry.roomname });
     });
 
-    let dataPath = path.join(__dirname, '..', 'data', 'privateRooms.json');
-
     await fs.writeFile(dataPath, JSON.stringify(temp), 'utf8', async (err) => {
       if (err) console.log(err);
     });
@@ -27,7 +26,6 @@ const fetchPrivateRooms = async () => {
     console.log(err);
     return false;
   }
-  let dataPath = path.join(__dirname, '..', 'data', 'privateRooms.json');
 
   let roomData = await fs.readFile(dataPath, 'utf8');
   roomData = JSON.parse(roomData).rooms;

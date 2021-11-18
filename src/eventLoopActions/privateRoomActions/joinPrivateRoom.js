@@ -1,4 +1,4 @@
-const rl = require('../utils/readLine.js');
+const rl = require('../../utils/readLine.js');
 const axios = require('axios');
 const chalk = require('chalk');
 

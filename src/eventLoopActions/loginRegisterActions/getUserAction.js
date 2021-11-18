@@ -1,7 +1,7 @@
-const rl = require('../utils/readLine');
+const rl = require('../../utils/readLine');
 const chalk = require('chalk');
 
-const loginOrRegister = async () => {
+const getUserAction = async () => {
   console.log(
     chalk.red('====='),
     chalk.cyan('Choose an Option'),
@@ -25,4 +25,4 @@ const loginOrRegister = async () => {
   return choice;
 };
 
-module.exports = loginOrRegister;
+module.exports = getUserAction;
