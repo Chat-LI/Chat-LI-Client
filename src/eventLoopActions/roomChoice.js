@@ -21,6 +21,7 @@ module.exports = async function () {
 
   let answer = await rl.question('');
 
+  // eslint-disable-next-line no-prototype-builtins
   while (!rooms.hasOwnProperty(answer)) {
     console.log(chalk.bgRed('\n Invalid room choice \n'));
 
