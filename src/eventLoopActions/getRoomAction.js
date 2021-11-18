@@ -1,5 +1,8 @@
 const rl = require('../utils/readLine');
 const chalk = require('chalk');
+const util = require('util');
+
+const question = util.promisify(rl.question).bind(rl);
 
 const getRoomType = async () => {
   console.log(
@@ -26,7 +29,7 @@ const getRoomType = async () => {
     chalk.cyan('Create a private room'),
     chalk.red('---\n')
   );
-  let choice = await rl.question('');
+  let choice = await question('');
 
   return choice;
 };

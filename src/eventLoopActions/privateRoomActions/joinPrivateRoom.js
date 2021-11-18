@@ -1,12 +1,15 @@
 const rl = require('../../utils/readLine.js');
 const axios = require('axios');
 const chalk = require('chalk');
+const util = require('util');
+
+const question = util.promisify(rl.question).bind(rl);
 
 const joinPrivateRoom = async (roomname) => {
   let room = null;
   do {
     console.log(chalk.cyan('Please the password for this room'));
-    let password = await rl.question('');
+    let password = await question('');
     try {
       let res = await axios.post(
         `${process.env.SOCKET_SERVER}joinroom`,

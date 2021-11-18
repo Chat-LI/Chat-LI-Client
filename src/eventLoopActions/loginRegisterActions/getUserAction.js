@@ -1,5 +1,8 @@
 const rl = require('../../utils/readLine');
 const chalk = require('chalk');
+const util = require('util');
+
+const question = util.promisify(rl.question).bind(rl);
 
 const getUserAction = async () => {
   console.log(
@@ -20,7 +23,7 @@ const getUserAction = async () => {
     chalk.cyan('Register'),
     chalk.red('---\n')
   );
-  let choice = await rl.question('');
+  let choice = await question('');
 
   return choice;
 };

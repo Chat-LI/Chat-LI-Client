@@ -1,14 +1,17 @@
 const rl = require('../../utils/readLine.js');
 const axios = require('axios');
 const chalk = require('chalk');
+const util = require('util');
+
+const question = util.promisify(rl.question).bind(rl);
 
 const register = async (socket) => {
   let user = null;
   do {
     console.log(chalk.cyan('\nPlease enter a username:'));
-    let username = await rl.question('');
+    let username = await question('');
     console.log(chalk.cyan('Please enter a password'));
-    let password = await rl.question('');
+    let password = await question('');
 
     let body = { username, password };
 
