@@ -1,5 +1,5 @@
 const fetchPrivateRooms = require('./fetchPrivateRooms');
-const rl = require('../../utils/readLine');
+const { question } = require('../../utils/readLine.js');
 const chalk = require('chalk');
 const joinPrivateRoom = require('./joinPrivateRoom');
 
@@ -36,7 +36,7 @@ const choosePrivateRoom = async () => {
     );
   }
 
-  let answer = parseInt(await rl.question(''));
+  let answer = parseInt(await question(''));
 
   while (answer < 1 || answer > rooms.length || Number.isNaN(answer)) {
     idx = 1;
@@ -49,7 +49,7 @@ const choosePrivateRoom = async () => {
         chalk.red('---\n')
       );
     }
-    answer = parseInt(await rl.question(''));
+    answer = parseInt(await question(''));
   }
   let roomResult = await joinPrivateRoom(rooms[answer - 1].roomname);
   return roomResult;

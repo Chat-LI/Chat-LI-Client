@@ -1,4 +1,4 @@
-const rl = require('../utils/readLine');
+const { question } = require('../utils/readLine.js');
 const chalk = require('chalk');
 
 const getRoomType = async () => {
@@ -26,7 +26,7 @@ const getRoomType = async () => {
     chalk.cyan('Create a private room'),
     chalk.red('---\n')
   );
-  let choice = await rl.question('');
+  let choice = await question('');
 
   return choice;
 };

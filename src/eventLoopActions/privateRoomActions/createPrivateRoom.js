@@ -1,4 +1,4 @@
-const rl = require('../../utils/readLine.js');
+const { question } = require('../../utils/readLine');
 const axios = require('axios');
 const chalk = require('chalk');
 
@@ -7,9 +7,9 @@ const createPrivateRoom = async () => {
 
   do {
     console.log(chalk.cyan('\nPlease enter a name for your room:'));
-    roomname = await rl.question('');
+    roomname = await question('');
     console.log(chalk.cyan('Please enter a password for your room'));
-    let password = await rl.question('');
+    let password = await question('');
 
     let body = { roomname, password };
 

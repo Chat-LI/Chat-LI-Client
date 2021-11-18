@@ -1,4 +1,4 @@
-const rl = require('../../utils/readLine.js');
+const { question } = require('../../utils/readLine.js');
 const axios = require('axios');
 const chalk = require('chalk');
 
@@ -6,9 +6,9 @@ const register = async (socket) => {
   let user = null;
   do {
     console.log(chalk.cyan('\nPlease enter a username:'));
-    let username = await rl.question('');
+    let username = await question('');
     console.log(chalk.cyan('Please enter a password'));
-    let password = await rl.question('');
+    let password = await question('');
 
     let body = { username, password };
 

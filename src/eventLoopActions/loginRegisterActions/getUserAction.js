@@ -1,4 +1,4 @@
-const rl = require('../../utils/readLine');
+const { question } = require('../../utils/readLine.js');
 const chalk = require('chalk');
 
 const getUserAction = async () => {
@@ -20,7 +20,7 @@ const getUserAction = async () => {
     chalk.cyan('Register'),
     chalk.red('---\n')
   );
-  let choice = await rl.question('');
+  let choice = await question('');
 
   return choice;
 };
