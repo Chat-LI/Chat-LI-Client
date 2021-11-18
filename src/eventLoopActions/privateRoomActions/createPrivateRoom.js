@@ -14,7 +14,7 @@ const createPrivateRoom = async () => {
     let body = { roomname, password };
 
     try {
-      let res = await axios.post(
+      await axios.post(
         //`${process.env.SOCKET_SERVER_LOCAL}rooms`,
         `${process.env.SOCKET_SERVER}rooms`,
         body

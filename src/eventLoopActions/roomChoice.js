@@ -21,7 +21,7 @@ module.exports = async function () {
 
   let answer = await rl.question('');
 
-  while (!rooms.hasOwnProperty(answer)) {
+  while (!Object.prototype.hasOwnProperty.call(answer)) {
     console.log(chalk.bgRed('\n Invalid room choice \n'));
 
     answer = await rl.question(``);

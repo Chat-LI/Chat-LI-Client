@@ -13,6 +13,8 @@ const mainLoop = async (socket) => {
     choice = await loginRegisterInterface.getUserAction();
   }
 
+  let username;
+
   choice === '1'
     ? (username = await loginRegisterInterface.login(socket))
     : (username = await loginRegisterInterface.register(socket));
