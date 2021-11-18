@@ -8,8 +8,8 @@ const fetchPrivateRooms = async () => {
     var temp = {
       rooms: [],
     };
-    let res = await axios.get(`${process.env.SOCKET_SERVER}rooms`);
-//     let res = await axios.get(`${process.env.SOCKET_SERVER_LOCAL}rooms`);
+    //let res = await axios.get(`${process.env.SOCKET_SERVER}rooms`);
+    let res = await axios.get(`${process.env.SOCKET_SERVER_LOCAL}rooms`);
 
     res.data.forEach((entry) => {
       temp.rooms.push({ roomname: entry.roomname });

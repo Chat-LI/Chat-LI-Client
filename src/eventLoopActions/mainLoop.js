@@ -3,6 +3,7 @@ const messageLoop = require('./messageLoop');
 const roomChoice = require('./roomChoice');
 const getRoomAction = require('./getRoomAction');
 const privateRoomChoice = require('./privateRoomChoice');
+const createPrivateRoom = require('./createPrivateRoom');
 const login = require('./login');
 const register = require('./register');
 const chalk = require('chalk');
@@ -33,13 +34,23 @@ const mainLoop = async (socket) => {
     room = await roomChoice();
   } else if (roomAction === '2') {
     room = await privateRoomChoice();
-    console.log(room);
+
+    if (!room) {
+      console.log(
+        chalk.red.bgYellow(
+          ' There are currently no private rooms available. Joining general... \n'
+        )
+      );
+      room = 'General';
+    }
   } else {
-    //user selected create private room
-    console.log('Coming soon!');
+    room = await createPrivateRoom();
+    if (!room) {
+      room = 'General';
+    }
   }
 
-  console.log(`Joining room: ${room}`);
+  console.log(chalk.magenta(`\nJoining room: ${room}`));
   socket.emit('join', { room, username });
 
   messageLoop(socket, room);

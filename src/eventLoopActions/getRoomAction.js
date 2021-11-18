@@ -17,7 +17,7 @@ const getRoomType = async () => {
   console.log(
     chalk.yellow('2]'),
     chalk.red('---'),
-    chalk.cyan(' Join a private room'),
+    chalk.cyan('Join a private room'),
     chalk.red('---\n')
   );
   console.log(

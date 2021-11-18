@@ -1,6 +1,7 @@
 const fetchPrivateRooms = require('./fetchPrivateRooms');
 const rl = require('../utils/readLine');
 const chalk = require('chalk');
+const joinPrivateRoom = require('./joinPrivateRoom');
 
 const privateRoomChoice = async () => {
   let roomData = await fetchPrivateRooms();
@@ -29,15 +30,15 @@ const privateRoomChoice = async () => {
     rooms.push(room);
     console.log(
       chalk.yellow(`${idx++}]`),
-      chalk.red('   ---'),
+      chalk.red('---'),
       chalk.cyan(`${room.roomname}`),
       chalk.red('---\n')
     );
   }
 
-  let answer = await rl.question('');
+  let answer = parseInt(await rl.question(''));
 
-  while (answer < 1 || answer > rooms.length) {
+  while (answer < 1 || answer > rooms.length || Number.isNaN(answer)) {
     idx = 1;
     console.log(chalk.bgRed('\n Invalid room choice \n'));
     for (let room of roomData) {
@@ -48,10 +49,10 @@ const privateRoomChoice = async () => {
         chalk.red('---\n')
       );
     }
-    answer = await rl.question(``);
+    answer = parseInt(await rl.question(''));
   }
-
-  return rooms[answer - 1].roomname;
+  let roomResult = await joinPrivateRoom(rooms[answer - 1].roomname);
+  return roomResult;
 };
 
 module.exports = privateRoomChoice;
