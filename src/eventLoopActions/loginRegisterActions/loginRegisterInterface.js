@@ -2,7 +2,7 @@ const login = require('./login');
 const getUserAction = require('./getUserAction');
 const register = require('./register');
 
-loginRegisterInterface = {
+let loginRegisterInterface = {
   login,
   getUserAction,
   register,
