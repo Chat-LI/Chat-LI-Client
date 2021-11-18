@@ -39,6 +39,11 @@ const mainLoop = async (socket) => {
     console.log('Coming soon!');
   }
 
+  console.log(
+    `\n ${chalk.red('====')} Run ${chalk.green(
+      '/help'
+    )} to see list of available commands ${chalk.red('====')}\n`
+  );
   console.log(`Joining room: ${room}`);
   socket.emit('join', { room, username });
 
