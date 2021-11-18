@@ -1,9 +1,6 @@
-const rl = require('../utils/readLine');
+const { question } = require('../utils/readLine.js');
 const rooms = require('../data/publicRooms.json');
 const chalk = require('chalk');
-const util = require('util');
-
-const question = util.promisify(rl.question).bind(rl);
 
 module.exports = async function () {
   console.log(

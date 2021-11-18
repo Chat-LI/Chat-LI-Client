@@ -1,4 +1,4 @@
-const rl = require('../utils/readLine');
+const { rl } = require('../utils/readLine.js');
 const rooms = require('../data/publicRooms.json');
 const commandList = require('../socket/commands.json');
 const chalk = require('chalk');

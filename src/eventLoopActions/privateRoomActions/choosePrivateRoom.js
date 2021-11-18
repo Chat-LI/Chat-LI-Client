@@ -1,10 +1,7 @@
 const fetchPrivateRooms = require('./fetchPrivateRooms');
-const rl = require('../../utils/readLine');
+const { question } = require('../../utils/readLine.js');
 const chalk = require('chalk');
 const joinPrivateRoom = require('./joinPrivateRoom');
-const util = require('util');
-
-const question = util.promisify(rl.question).bind(rl);
 
 const choosePrivateRoom = async () => {
   let roomData = await fetchPrivateRooms();

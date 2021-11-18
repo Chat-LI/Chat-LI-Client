@@ -1,10 +1,6 @@
-const rl = require('../../utils/readLine.js');
+const { question } = require('../../utils/readLine');
 const axios = require('axios');
 const chalk = require('chalk');
-
-const util = require('util');
-
-const question = util.promisify(rl.question).bind(rl);
 
 const createPrivateRoom = async () => {
   let roomname = null;
