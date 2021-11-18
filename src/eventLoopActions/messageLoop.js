@@ -1,5 +1,6 @@
-const rl = require('../utils/readLine');
-const rooms = require('../socket/rooms.json');
+const { rl } = require('../utils/readLine.js');
+const rooms = require('../data/publicRooms.json');
+const commandList = require('../socket/commands.json');
 const chalk = require('chalk');
 
 const messageLoop = (socket, room) => {
@@ -42,6 +43,12 @@ const messageLoop = (socket, room) => {
       } else {
         socket.emit('listRoomUsers', room);
       }
+    } else if (input === '/help') {
+      console.log('[INFO] List of commands to run\n');
+      commandList.forEach((command) => {
+        console.log(command);
+      });
+      console.log('\n');
     } else {
       let payload = {
         message: input,
