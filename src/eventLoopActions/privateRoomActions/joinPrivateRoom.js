@@ -10,7 +10,6 @@ const joinPrivateRoom = async (roomname) => {
     try {
       let res = await axios.post(
         `${process.env.SOCKET_SERVER}joinroom`,
-        //`${process.env.SOCKET_SERVER_LOCAL}joinroom`,
         { isRoom: true },
         {
           auth: {

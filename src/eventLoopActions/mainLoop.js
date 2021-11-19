@@ -53,18 +53,15 @@ const mainLoop = async (socket) => {
     }
   }
 
-  //display help commands prompt
   console.log(
     `\n ${chalk.red('====')} Run ${chalk.green(
       '/help'
     )} to see list of available commands ${chalk.red('====')}\n`
   );
 
-  //inform server of the room that a user has joined
   console.log(chalk.magenta(`\nJoining room: ${room}`));
   socket.emit('join', { room, username });
 
-  //begin messaging logic
   messageLoop(socket, room);
 };
 
