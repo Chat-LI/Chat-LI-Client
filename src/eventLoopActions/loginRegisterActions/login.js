@@ -13,7 +13,6 @@ const login = async (socket) => {
     try {
       let res = await axios.post(
         `${process.env.SOCKET_SERVER}signin`,
-        //`${process.env.SOCKET_SERVER_LOCAL}signin`,
         {},
         {
           auth: {

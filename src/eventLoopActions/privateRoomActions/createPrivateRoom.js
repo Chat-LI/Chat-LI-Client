@@ -14,11 +14,7 @@ const createPrivateRoom = async () => {
     let body = { roomname, password };
 
     try {
-      await axios.post(
-        //`${process.env.SOCKET_SERVER_LOCAL}rooms`,
-        `${process.env.SOCKET_SERVER}rooms`,
-        body
-      );
+      await axios.post(`${process.env.SOCKET_SERVER}rooms`, body);
     } catch (err) {
       console.log(
         chalk.bgRed(
