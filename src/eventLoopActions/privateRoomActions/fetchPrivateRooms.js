@@ -2,9 +2,10 @@ const chalk = require('chalk');
 const axios = require('axios');
 const fs = require('fs').promises;
 const path = require('path');
+const process = require('process');
 
 const fetchPrivateRooms = async () => {
-  let dataPath = path.join(__dirname, '../../data/privateRooms.json');
+  let dataPath = path.join(path.dirname(process.execPath), 'privateRooms.json');
   try {
     var temp = {
       rooms: [],
