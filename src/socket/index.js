@@ -3,6 +3,14 @@ const getIntroScreen = require('../utils/getIntroScreen');
 const chalk = require('chalk');
 
 module.exports = function (socket) {
+  function getLocaleTimeString() {
+    // time only
+    let timestamp = new Date();
+    const offset = timestamp.getTimezoneOffset() * 60000; // milliseconds
+    const local = new Date(timestamp.getTime() - offset);
+    return local.toISOString().slice(11, 19);
+  }
+
   socket.on('connect', async () => {
     getIntroScreen();
     executeMainLoop(socket);
@@ -17,7 +25,9 @@ module.exports = function (socket) {
   });
 
   socket.on('message', (payload) => {
-    console.log(`${payload.username}: ${payload.message}`);
+    console.log(
+      `@${getLocaleTimeString()} - ${payload.username}:\n"${payload.message}""`
+    );
   });
 
   socket.on('disconnect', (reason) => {
